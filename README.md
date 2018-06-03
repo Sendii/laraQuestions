@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Laravel 5.5 for Laravel Shift
 
 This repository contains the latest version of Laravel 5.5. It is used as a reference by [Laravel Shift - the automated way to upgrade Laravel applications](https://laravelshift.com).
