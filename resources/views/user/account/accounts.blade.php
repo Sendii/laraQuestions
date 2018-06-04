@@ -15,11 +15,7 @@
 	$_to = \App\User::where('name', '=', $to)->value('id');
 		// dd($_requestUrl);
 	?>
-	@if($name == $_requestUrl)
-	<button type="button" style="margin-left: 20px;" class="btn btn-primary" data-toggle="modal" data-target="#modal-addQuestion">
-		Lihat Pertanyaan
-	</button>
-	@else
+	@if($name != $_requestUrl)
 	<button type="button" style="margin-left: 20px; margin-bottom: 5px;" class="btn btn-primary" data-toggle="modal" data-target="#modal-addQuestion">
 		Tambah Pertanyaan
 	</button>

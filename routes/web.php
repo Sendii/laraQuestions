@@ -32,9 +32,11 @@ Route::middleware(['admin'], 'auth')->group(function() {
 });
 
 $name = \App\User::where('name');
+
 Route::middleware(['user'], 'auth')->group(function() {
 	if(empty($name)) {
 		Route::get('account/{name}', 'UserController@myAccount');
+		Route::get('account', 'UserController@allAccount');
 	}else {
 		Route::get('account/404', function() {
 			echo "masalah uyy";

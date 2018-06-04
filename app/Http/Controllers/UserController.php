@@ -15,6 +15,11 @@ class UserController extends Controller
     	return view('user/account.accounts')->with(['accounts' => $account, 'questions' => $question]);
     }
 
+    public function allAccount() {
+        $account = User::all();
+        return view('user/account.all')->with(['accounts' => $account]);
+    }
+
     public function saveQuestion(Request $r) {
     	$questions_code = str_random(11);
     	$newquestion = new Question;

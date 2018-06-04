@@ -66,10 +66,13 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+            <?php 
+                $name = Auth::user()->name;
+             ?>
             <?php if(Route::has('login')): ?>
                 <div class="top-right links">
                     <?php if(auth()->guard()->check()): ?>
-                        <a href="<?php echo e(url('/home')); ?>">Home</a>
+                        <a href="<?php echo e(url('/account/'.$name)); ?>">Home</a>
                     <?php else: ?>
                         <a href="<?php echo e(route('login')); ?>">Login</a>
                         <a href="<?php echo e(route('register')); ?>">Register</a>
@@ -79,15 +82,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Ask Me:)
+                    Tellonym.:)
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://laravel.com/docs">Info</a>
+                    <a href="https://laracasts.com">User</a>
+                    <a href="https://laravel-news.com">Contact</a>
                 </div>
             </div>
         </div>
