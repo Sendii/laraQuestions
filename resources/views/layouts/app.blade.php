@@ -30,7 +30,12 @@
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'AskMe') }}
-                    </a><input type="text" class="form-control" name="">
+                    </a>
+                    <form class="form-horizontal" role="form" method="GET" action=" {{ url('accounts/search') }}">
+                        {{ csrf_field() }}
+                        <input type="text" class="form-control" name="query" placeholder="Search name" id="search" required>
+                        <input type="hidden" name="search" value="1">
+                    </form>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -47,31 +52,34 @@
                         <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                         <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                    </a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
 
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    Logouts
+                                </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                            <li>
+                                <a href="{{ url('accounts/settings') }}">settings</a>
+                            </li>
+                        </ul>
                     </li>
+                    @endguest
                 </ul>
-            </li>
-            @endguest
-        </ul>
-    </div>
-</div>
-</nav>
+            </div>
+        </div>
+    </nav>
 
-@yield('content')
+    @yield('content')
 </div>
 
 <!-- Scripts -->

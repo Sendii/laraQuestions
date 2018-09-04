@@ -31,17 +31,33 @@ Route::middleware(['admin'], 'auth')->group(function() {
 	});
 });
 
-$name = \App\User::where('name');
-
+$name = \App\User::where('name')->get();
 Route::middleware(['user'], 'auth')->group(function() {
-	if(empty($name)) {
-		Route::get('account/{name}', 'UserController@myAccount');
-		Route::get('account', 'UserController@allAccount');
-	}else {
-		Route::get('account/404', function() {
-			echo "masalah uyy";
-		});
-	}
-	Route::get('account/{name}/{questions_code}', 'UserController@myQuestions_code');
+	Route::get('account/{name}', 'UserController@myAccount');
+	Route::get('accounts', 'UserController@allAccount');
+	Route::get('{name}/{questions_code}', 'UserController@myQuestions_code');
 	Route::post('question/save', 'UserController@saveQuestion');
+	Route::get('accounts/search/' , 'UserController@search');
+	Route::get('accounts/settings', 'UserController@settings');
+
+
+	Route::get('tan', function() {
+		$test = Auth::user()->id;
+		$a = \App\Question::where('user_id_to', '=', $test)->count();
+		$followings = \App\Follow::where('leader_id', $test)->count();
+		$totalfollowings = \App\User::where('id', $test)->get();
+		$followers = \App\Follow::where('to_id', $test)->count();
+		echo "id anda ".$test. "<br>";
+		echo "jumlah pertanyaan anda ada ".$a. "<br>";
+		echo "jumlah followings anda ada ".$followings. "<br>";
+		echo "followings : ".$totalfollowings. "<br>";
+		echo "jumlah followers anda ada ".$followers . "<br>";
+	});
+});
+
+Route::get('contacts', function() {
+	echo "Halooo admin";
+});
+Route::get('info', function() {
+	echo "Halooo ini info";
 });

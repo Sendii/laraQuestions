@@ -66,13 +66,13 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            <?php 
-                $name = Auth::user()->name;
-             ?>
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/account/'.$name) }}">Home</a>
+                    <?php 
+                    $name = Auth::user()->name;
+                    ?>
+                        <a href="{{ url('/account/'.$name) }}">{{ $name }}</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
@@ -82,13 +82,13 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Tellonym.:)
+                    Laravel
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Info</a>
-                    <a href="https://laracasts.com">User</a>
-                    <a href="https://laravel-news.com">Contact</a>
+                    <a href="{{ url('info') }}">Info</a>
+                    <a href="{{ url('account') }}">User</a>
+                    <a href="{{ url('contacts') }}">Contact</a>
                 </div>
             </div>
         </div>
