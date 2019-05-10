@@ -21,7 +21,7 @@
 				<div class="card-body">
 					<h5 class="card-title"><?php echo e($account->name); ?></h5>
 					<p class="card-text"><?php echo e($account->email); ?>.</p>
-					<a href="#" class="btn btn-primary">Go somewhere</a>
+					<a href="<?php echo e(url('account', [$account->name])); ?>" class="btn btn-primary"><?php echo e($account->name); ?></a>
 				</div>
 			</div>
 			<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

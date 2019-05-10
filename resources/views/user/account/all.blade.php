@@ -21,7 +21,7 @@
 				<div class="card-body">
 					<h5 class="card-title">{{ $account->name }}</h5>
 					<p class="card-text">{{ $account->email }}.</p>
-					<a href="#" class="btn btn-primary">Go somewhere</a>
+					<a href="{{url('account', [$account->name])}}" class="btn btn-primary">{{ $account->name }}</a>
 				</div>
 			</div>
 			@endforeach

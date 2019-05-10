@@ -82,12 +82,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Nanyaa_laah!
                 </div>
 
                 <div class="links">
                     <a href="{{ url('info') }}">Info</a>
-                    <a href="{{ url('account') }}">User</a>
+                    <a href="{{ url('accounts') }}">Accounts</a>
                     <a href="{{ url('contacts') }}">Contact</a>
                 </div>
             </div>

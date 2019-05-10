@@ -31,10 +31,9 @@
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'AskMe') }}
                     </a>
-                    <form class="form-horizontal" role="form" method="GET" action=" {{ url('accounts/search') }}">
+                    <form class="form-horizontal" role="form" method="GET" action=" {{ url('search') }}">
                         {{ csrf_field() }}
                         <input type="text" class="form-control" name="query" placeholder="Search name" id="search" required>
-                        <input type="hidden" name="search" value="1">
                     </form>
                 </div>
 

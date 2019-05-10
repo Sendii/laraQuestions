@@ -18,7 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::middleware(['admin'], 'auth')->group(function() {
 	Route::group(['prefix' => 'admins'], function(){
 		Route::get('/', function(){
@@ -32,13 +31,16 @@ Route::middleware(['admin'], 'auth')->group(function() {
 });
 
 $name = \App\User::where('name')->get();
-Route::middleware(['user'], 'auth')->group(function() {
+Route::middleware(['user']||['admin'], 'auth')->group(function() {
 	Route::get('account/{name}', 'UserController@myAccount');
 	Route::get('accounts', 'UserController@allAccount');
 	Route::get('{name}/{questions_code}', 'UserController@myQuestions_code');
 	Route::post('question/save', 'UserController@saveQuestion');
-	Route::get('accounts/search/' , 'UserController@search');
+	Route::post('answer/save', 'UserController@saveAnswer');
+	Route::get('search/' , 'UserController@search');
 	Route::get('accounts/settings', 'UserController@settings');
+	Route::get('admin/banned/{name}', 'UserController@banned');
+	Route::get('answers/{id}/{questions_code}', 'UserController@showAnswer');
 
 
 	Route::get('tan', function() {

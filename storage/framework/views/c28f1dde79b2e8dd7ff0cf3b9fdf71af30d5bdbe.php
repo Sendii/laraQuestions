@@ -82,12 +82,12 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Nanyaa_laah!
                 </div>
 
                 <div class="links">
                     <a href="<?php echo e(url('info')); ?>">Info</a>
-                    <a href="<?php echo e(url('account')); ?>">User</a>
+                    <a href="<?php echo e(url('accounts')); ?>">Accounts</a>
                     <a href="<?php echo e(url('contacts')); ?>">Contact</a>
                 </div>
             </div>
